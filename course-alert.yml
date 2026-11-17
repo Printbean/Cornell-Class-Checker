@@ -1,0 +1,21 @@
+name: Course seat alert
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # every 5 min (GitHub may run it a few minutes late)
+  workflow_dispatch:         # lets you hit "Run workflow" to test it
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check HADM 2351-401
+        env:
+          ROSTER: SP27
+          SUBJECT: HADM
+          CATALOG: "2351"
+          CLASS_NBR: "15810"
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: python3 check_course.py
