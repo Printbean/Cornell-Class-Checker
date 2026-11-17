@@ -16,6 +16,6 @@ jobs:
           ROSTER: SP27
           SUBJECT: HADM
           CATALOG: "2351"
-          CLASS_NBR: "15810"
+          CLASS_NBR: "15809"
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
         run: python3 check_course.py
